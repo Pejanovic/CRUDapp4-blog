@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 
 /**
  * This is the model class for table "blog".
@@ -21,6 +22,17 @@ class Blog extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'blog';
+
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+            ],
+        ];
     }
 
     /**
@@ -30,7 +42,7 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'slug', 'intro', 'content'], 'required'],
-            [['title', 'slug'], 'string', 'max' => 100],
+            [['title',], 'string', 'max' => 100],
             [['intro'], 'string', 'max' => 1000],
             [['content'], 'string', 'max' => 5000],
         ];
@@ -39,6 +51,8 @@ class Blog extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+
     public function attributeLabels()
     {
         return [

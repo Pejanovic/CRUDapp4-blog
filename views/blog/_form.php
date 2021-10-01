@@ -8,13 +8,13 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
 <div class="blog-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
+ 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'intro')->textarea(['maxlength' => true]) ?>
 

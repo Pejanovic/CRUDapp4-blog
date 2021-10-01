@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <td style="width:15px;"><?php echo $oneblog->slug?></td>
       <td> 
-          <a href="<?= \yii\helpers\Url::to(['view', 'id' => $oneblog->id]) ?>">
+          <a href="<?= \yii\helpers\Url::to(['view', 'slug' => $oneblog->slug]) ?>">
           <?php echo $oneblog->title ?></a></td>
 
     </tr>
