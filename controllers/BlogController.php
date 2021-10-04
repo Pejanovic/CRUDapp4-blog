@@ -77,6 +77,13 @@ class BlogController extends Controller
         ]);
     }
 
+    public function actionArchview($id)
+    {
+        return $this->render('archview', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     /**
      * Creates a new Blog model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -88,7 +95,7 @@ class BlogController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'id' => $model->id, 'slug'=>$model->slug]);
             }
         } else {
             $model->loadDefaultValues();
@@ -111,7 +118,7 @@ class BlogController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, 'slug' => $model->slug]);
         }
 
         return $this->render('update', [

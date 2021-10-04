@@ -31,27 +31,33 @@ class Blog extends \yii\db\ActiveRecord
             [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'title',
+                'slugAttribute' => 'slug',
             ],
         ];
     }
+
+  
+
 
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
+
         return [
-            [['title', 'slug', 'intro', 'content'], 'required'],
+            [['title', 'intro', 'content'], 'required'],
             [['title',], 'string', 'max' => 100],
             [['intro'], 'string', 'max' => 1000],
             [['content'], 'string', 'max' => 5000],
         ];
     }
 
+    
+
     /**
      * {@inheritdoc}
      */
-
 
     public function attributeLabels()
     {

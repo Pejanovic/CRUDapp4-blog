@@ -10,28 +10,33 @@ $this->title = Yii::t('app', 'Archive');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-index">
-
+  <div class="container bg-light">
     <h1><?= Html::encode($this->title) ?></h1>
-    <table class="table table-light">
 
-  <tbody>
-
+    <div class="row">
       <?php foreach($model as $oneblog){ ?>
+      <div class="container bg-danger" style="margin:10px; color:white; border-radius:20px;">
+        <div class="row">
+          <div class="container" style="padding:10px">
+            <div class="col-12">
+      <h2><?php echo $oneblog->title?></h2>
+           </div>
+           <div class="col-12">
+      <a><?php echo substr($oneblog->content,0,100)?></a>
 
-    <tr class="table-light">
-
-      <td style="width:15px;"><?php echo $oneblog->slug?></td>
-      <td> 
-          <a href="<?= \yii\helpers\Url::to(['view', 'slug' => $oneblog->slug]) ?>">
-          <?php echo $oneblog->title ?></a></td>
-
-    </tr>
-    <?php } ?>
-    
-  </tbody>
-</table>
+      <a href="<?= \yii\helpers\Url::to(['archview', 'id' => $oneblog->id, 'slug'=>$oneblog->slug]) ?>" style="color:#fff; ">
+          Read more...</a>
+            </div>
+          </div>
+        </div>
+      </div>
+            <br>
+      <?php } ?>
 
 
 
 
+
+    </div>
+  </div>
 </div>
